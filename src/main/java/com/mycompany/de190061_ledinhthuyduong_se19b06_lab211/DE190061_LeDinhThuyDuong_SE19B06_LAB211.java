@@ -36,6 +36,7 @@ public class DE190061_LeDinhThuyDuong_SE19B06_LAB211 {
                         } else {
                             System.out.println("Found " + searchNumber + " at index: " + index);
                         }
+                        break;
                     }
                     case 2 -> {
                         System.out.println("Enter your content:");
@@ -43,6 +44,7 @@ public class DE190061_LeDinhThuyDuong_SE19B06_LAB211 {
                         LetterAndCharaterCount count = new LetterAndCharaterCount(str);
                         System.out.println(count.countWord());
                         System.out.println(count.countCharater());
+                        break;
                     }
                     case 3 -> {
                         System.out.println("Choose the input base system:");
@@ -61,6 +63,7 @@ public class DE190061_LeDinhThuyDuong_SE19B06_LAB211 {
                         String inputValue = Validation.inputString();
                         ChangeBaseNumberSystem changeBaseNumber = new ChangeBaseNumberSystem(inputBase, outputBase, inputValue);
                         changeBaseNumber.displayResult();
+                        break;
                     }
                     case 4 -> {
                         String[] choices = {
@@ -94,6 +97,7 @@ public class DE190061_LeDinhThuyDuong_SE19B06_LAB211 {
                             }
                         };
                         calculationMenu.run();
+                        break;
                     }
                 }
             }

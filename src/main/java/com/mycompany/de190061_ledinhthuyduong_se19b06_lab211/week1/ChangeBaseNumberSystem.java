@@ -130,12 +130,15 @@ public class ChangeBaseNumberSystem {
         switch (outputBase) {
             case 1 -> {
                 System.out.println("Binary: " + convertToBinary(inputValue, inputBase));
+                break;
             }
             case 2 -> {
                 System.out.println("Decimal: " + convertToDecimal(inputValue, inputBase));
+                break;
             }
             case 3 -> {
                 System.out.println("Hexadecimal: " + convertToHexa(inputValue, inputBase));
+                break;
             }
         }
     }
