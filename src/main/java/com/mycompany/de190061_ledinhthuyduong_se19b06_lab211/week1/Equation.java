@@ -118,7 +118,7 @@ public class Equation {
                 } else if (resultList.isEmpty()) {
                     System.out.println("Infinitely many solutions");
                 } else if (resultList.size() == 1) {
-                    System.out.println("Solution: x1 = x2 = " + resultList.get(0));
+                    System.out.println("Solution: x = " + resultList.get(0));
                 } else {
                     System.out.println("Solution: x1 = " + resultList.get(0) + ", x2 = " + resultList.get(1));
                 }

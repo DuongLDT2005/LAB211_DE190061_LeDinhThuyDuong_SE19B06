@@ -4,11 +4,14 @@
  */
 package com.mycompany.de190061_ledinhthuyduong_se19b06_lab211.week1;
 
+import com.mycompany.de190061_ledinhthuyduong_se19b06_lab211.Validation;
+
 /**
  *
  * @author DELL
  */
 public class ChangeBaseNumberSystem {
+
     private int inputBase, outputBase;
     private String inputValue;
 
@@ -41,7 +44,6 @@ public class ChangeBaseNumberSystem {
                 return convertToBinary(decNumber, 2);
             }
             default -> {
-                System.out.println("Wrong input");
                 return null;
             }
         }
@@ -56,11 +58,6 @@ public class ChangeBaseNumberSystem {
                     int digitValue = 0;
                     if (digit == '1') {
                         digitValue = 1;
-                    } else if (digit == '0') {
-                        digitValue = 0;
-                    } else {
-                        System.out.println("Wrong input");
-                        return null;
                     }
                     decimalValue += digitValue * Math.pow(2, input.length() - 1 - i);
                 }
@@ -76,18 +73,14 @@ public class ChangeBaseNumberSystem {
                     int digitValue;
                     if (digit >= '0' && digit <= '9') {
                         digitValue = digit - '0';
-                    } else if (digit >= 'A' && digit <= 'F') {
-                        digitValue = digit - 'A' + 10;
                     } else {
-                        System.out.println("Wrong input");
-                        return null;
+                        digitValue = digit - 'A' + 10;
                     }
                     decimalValue += digitValue * Math.pow(16, input.length() - 1 - i);
                 }
                 return Integer.toString(decimalValue);
             }
             default -> {
-                System.out.println("Wrong input");
                 return null;
             }
         }
@@ -120,7 +113,6 @@ public class ChangeBaseNumberSystem {
                 return input;
             }
             default -> {
-                System.out.println("Wrong input");
                 return null;
             }
         }

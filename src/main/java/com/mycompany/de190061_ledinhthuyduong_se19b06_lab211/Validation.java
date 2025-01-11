@@ -54,6 +54,28 @@ public class Validation {
         }
     }
     
+    public static String inputBinary() {
+        while (true) {
+                String input = inputString();
+            if (input.matches("[01]+")) {
+                return input;
+            } else {
+                System.out.println("Input must contains 0 and 1! Please enter again!");
+            }
+        }
+    }
+    
+    public static String inputHexadecimal() {
+        while (true) {
+            String input = inputString();
+            if (input.matches("[0-9A-Fa-f]+")) {
+                return input;
+            } else {
+                System.out.println("Input must contain 0-9, A-F, or a-f! Please enter again!");
+            }
+        }
+    }
+    
     public static float inputFloat() {
         while (true) {
             try {

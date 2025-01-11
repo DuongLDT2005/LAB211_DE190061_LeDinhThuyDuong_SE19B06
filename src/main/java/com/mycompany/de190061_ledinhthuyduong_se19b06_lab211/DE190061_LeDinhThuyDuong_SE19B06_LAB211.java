@@ -16,7 +16,7 @@ public class DE190061_LeDinhThuyDuong_SE19B06_LAB211 {
             "Linear Search",
             "Letter And Character Count",
             "Change Base Number System",
-            "Solving The Equatin, Find The Square Number, Even Number And Odd Number"
+            "Solving The Equation, Find The Square Number, Even Number And Odd Number"
         };
         Menu menu = new Menu("EXCERSISE", options) {
             @Override
@@ -60,7 +60,21 @@ public class DE190061_LeDinhThuyDuong_SE19B06_LAB211 {
                         System.out.println("Enter your choice:");
                         int outputBase = Validation.inputIntegerInRange(1, 3);
                         System.out.println("Enter the input value:");
-                        String inputValue = Validation.inputString();
+                        String inputValue = null;
+                        switch (inputBase) {
+                            case 1 -> {
+                                inputValue = Validation.inputBinary();
+                                break;
+                            }
+                            case 2 -> {
+                                inputValue = Integer.toString(Validation.inputPositiveInteger());
+                                break;
+                            }
+                            case 3 -> {
+                                inputValue = Validation.inputHexadecimal();
+                                break;
+                            }
+                        }
                         ChangeBaseNumberSystem changeBaseNumber = new ChangeBaseNumberSystem(inputBase, outputBase, inputValue);
                         changeBaseNumber.displayResult();
                         break;
@@ -68,8 +82,7 @@ public class DE190061_LeDinhThuyDuong_SE19B06_LAB211 {
                     case 4 -> {
                         String[] choices = {
                             "Calculate Superlative Equation",
-                            "Calculate Quadratic Equation",
-                        };
+                            "Calculate Quadratic Equation",};
                         Menu calculationMenu = new Menu("Program", choices) {
                             @Override
                             public void execute(int n) {
