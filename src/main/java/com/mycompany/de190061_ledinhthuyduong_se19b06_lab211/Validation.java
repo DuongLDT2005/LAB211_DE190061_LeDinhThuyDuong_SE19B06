@@ -82,7 +82,30 @@ public class Validation {
                 float input = Float.parseFloat(inputString());
                 return input;
             } catch (NumberFormatException e) {
+                System.out.println("Invalid float format! Please enter again!");
+            }
+        }
+    }
+    
+    public static double inputDouble() {
+        while (true) {
+            try {
+                double input = Double.parseDouble(inputString());
+                return input;
+            } catch (NumberFormatException e) {
                 System.out.println("Invalid double format! Please enter again!");
+            }
+        }
+    }
+    
+    public static String inputOperator() {
+        while (true) {
+            String input = inputString();
+            if (input.matches("^[+\\-*/=^]$")) {
+                return input;
+            } else {
+                System.out.println("Input must contain one of the following characters(+, -, *, /, ^, =)!");
+                System.out.println("Please enter again!");
             }
         }
     }
