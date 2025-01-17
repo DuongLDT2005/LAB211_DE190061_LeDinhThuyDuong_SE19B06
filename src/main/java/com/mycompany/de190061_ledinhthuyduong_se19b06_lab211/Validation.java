@@ -54,6 +54,17 @@ public class Validation {
         }
     }
     
+    public static int inputInteger() {
+        while (true) {
+            try {
+                int input = Integer.parseInt(inputString());
+                return input;
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid integer format! Please enter again!");
+            }
+        }
+    }
+    
     public static String inputBinary() {
         while (true) {
                 String input = inputString();

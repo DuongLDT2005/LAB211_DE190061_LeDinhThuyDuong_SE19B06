@@ -33,14 +33,14 @@ public class Testing {
                         break;
                     }
                     case 3 -> {
-                        
+                        doMatrixCalculator();
                         break;
                     }
                 }
             }
         };
         menu.run();
-       
+
     }
 
     public static void doComputerPro() {
@@ -86,9 +86,7 @@ public class Testing {
                     System.out.println("Memory: " + memory);
                 }
             }
-        } catch (ArithmeticException e) {
-            System.out.println(e.getMessage());
-        } catch (IllegalArgumentException e) {
+        } catch (ArithmeticException | IllegalArgumentException e) {
             System.out.println(e.getMessage());
         }
     }
@@ -103,7 +101,7 @@ public class Testing {
         System.out.printf("BMI Number: %.2f\n", bmi);
         System.out.println("BMI Status: " + calculator.showStatusBMI(bmi));
     }
-    
+
     public static void doShapeCalculator() {
         System.out.println("==== Calculator Shape Program ====");
         System.out.println("Please input side width of Rectangle:");
@@ -125,4 +123,81 @@ public class Testing {
         circle.printResult();
         triangle.printResult();
     }
+
+    public static void doMatrixCalculator() {
+        String[] options = {
+            "Addition Matrix",
+            "Subtraction Matrix",
+            "Multiplication Matrix"
+        };
+        Menu matrixMenu = new Menu("Calculator program", options) {
+            @Override
+            public void execute(int n) {
+                try {
+                    switch (n) {
+                        case 1 -> {
+                            System.out.println("-------- Addition --------");
+                            Matrix matrix1 = getMatrixValue("Matrix1");
+                            Matrix matrix2 = getMatrixValue("Matrix2");
+                            System.out.println("-------- Result --------");
+                            matrix1.printMatrix(matrix1);
+                            System.out.println("+");
+                            matrix2.printMatrix(matrix2);
+                            System.out.println("=");
+                            Matrix result = matrix1.additionMatrix(matrix2);
+                            result.printMatrix(result);
+                            break;
+                        }
+                        case 2 -> {
+                            System.out.println("-------- Subtraction --------");
+                            Matrix matrix1 = getMatrixValue("Matrix1");
+                            Matrix matrix2 = getMatrixValue("Matrix2");
+                            System.out.println("-------- Result --------");
+                            matrix1.printMatrix(matrix1);
+                            System.out.println("-");
+                            matrix2.printMatrix(matrix2);
+                            System.out.println("=");
+                            Matrix result = matrix1.subtractionMatrix(matrix2);
+                            result.printMatrix(result);
+                            break;
+                        }
+                        case 3 -> {
+                            System.out.println("-------- Multiplication --------");
+                            Matrix matrix1 = getMatrixValue("Matrix1");
+                            Matrix matrix2 = getMatrixValue("Matrix2");
+                            System.out.println("-------- Result --------");
+                            matrix1.printMatrix(matrix1);
+                            System.out.println("*");
+                            matrix2.printMatrix(matrix2);
+                            System.out.println("=");
+                            Matrix result = matrix1.multiplicationMatrix(matrix2);
+                            result.printMatrix(result);
+                            break;
+                        }
+                    }
+                } catch (IllegalArgumentException e) {
+                    System.out.println(e.getMessage());
+                } catch (ArrayIndexOutOfBoundsException e) {
+                    System.out.println("Matrix index out of bounds");
+                }
+            }
+        };
+        matrixMenu.run();
+    }
+
+    public static Matrix getMatrixValue(String matrixName) {
+        System.out.print("Enter Row " + matrixName + ": ");
+        int row = Validation.inputPositiveInteger();
+        System.out.print("Enter Column " + matrixName + ": ");
+        int col = Validation.inputPositiveInteger();
+        Matrix matrix = new Matrix(row, col);
+        for (int i = 0; i < row; i++) {
+            for (int j = 0; j < col; j++) {
+                System.out.print("Enter " + matrixName + "[" + (i + 1) + "][" + (j + 1) + "]: ");
+                matrix.getMatrix()[i][j] = Validation.inputInteger();
+            }
+        }
+        return matrix;
+    }
+
 }
