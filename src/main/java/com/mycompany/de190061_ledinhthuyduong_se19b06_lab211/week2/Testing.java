@@ -82,7 +82,7 @@ public class Testing {
                     double b = Validation.inputDouble();
                     CalculatorProgram calculator = new CalculatorProgram(a, b, operator);
 //                    memory = calculator.calculate(memory, b, operator);
-                    memory = calculator.calculate(a, Operator.getOp(operator), b);
+                    memory = calculator.calculate(memory, Operator.getOp(operator), b);
                     System.out.println("Memory: " + memory);
                 }
             }
@@ -177,9 +177,7 @@ public class Testing {
                     }
                 } catch (IllegalArgumentException e) {
                     System.out.println(e.getMessage());
-                } catch (ArrayIndexOutOfBoundsException e) {
-                    System.out.println("Matrix index out of bounds");
-                }
+                } 
             }
         };
         matrixMenu.run();
