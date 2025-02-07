@@ -31,10 +31,12 @@ public class Validation {
                 if (input > 0) {
                     return input;
                 } else {
-                    System.out.println("Input must be positive! Please enter again!");
+                    throw new IllegalArgumentException("Input must be positive! Please enter again!");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid integer format! Please enter again!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
@@ -46,14 +48,16 @@ public class Validation {
                 if (input >= min && input <= max) {
                     return input;
                 } else {
-                    System.out.println("Input must be in range (" + min + ", " + max + ")! Please enter again!");
+                    throw new IllegalArgumentException("Input must be in range (" + min + ", " + max + ")! Please enter again!");
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid integer format! Please enter again!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
             }
         }
     }
-    
+
     public static int inputInteger() {
         while (true) {
             try {
@@ -64,10 +68,27 @@ public class Validation {
             }
         }
     }
-    
+
+    public static int inputIntegerGreaterThanANumber(int n) {
+        while (true) {
+            try {
+                int input = Integer.parseInt(inputString());
+                if (input >= n) {
+                    return input;
+                } else {
+                    throw new IllegalArgumentException("Input must be in range greater or equal than " + n + "! Please enter again!");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid integer format! Please enter again!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
     public static String inputBinary() {
         while (true) {
-                String input = inputString();
+            String input = inputString();
             if (input.matches("[01]+")) {
                 return input;
             } else {
@@ -75,7 +96,7 @@ public class Validation {
             }
         }
     }
-    
+
     public static String inputHexadecimal() {
         while (true) {
             String input = inputString();
@@ -86,7 +107,7 @@ public class Validation {
             }
         }
     }
-    
+
     public static float inputFloat() {
         while (true) {
             try {
@@ -97,7 +118,7 @@ public class Validation {
             }
         }
     }
-    
+
     public static double inputDouble() {
         while (true) {
             try {
@@ -108,7 +129,7 @@ public class Validation {
             }
         }
     }
-    
+
     public static String inputOperator() {
         while (true) {
             String input = inputString();
