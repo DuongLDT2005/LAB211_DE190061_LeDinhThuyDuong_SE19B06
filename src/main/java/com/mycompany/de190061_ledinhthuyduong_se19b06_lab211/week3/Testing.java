@@ -110,7 +110,7 @@ public class Testing {
                     case 2 -> {
                         int popValue = myStack.pop();
                         if (popValue == -1) {
-                            System.out.println("Stack is empty! Can not pop!");
+                            System.out.println("Stack is empty, can not pop!");
                         } else {
                             System.out.println("Remove element: " + popValue);
                         }
@@ -119,7 +119,7 @@ public class Testing {
                     case 3 -> {
                         int topValue = myStack.get();
                         if (topValue == -1) {
-                            System.out.println("Stack is empty! Can not peek!");
+                            System.out.println("Stack is empty, can not peek!");
                         } else {
                             System.out.println("Top value: " + topValue);
                         }

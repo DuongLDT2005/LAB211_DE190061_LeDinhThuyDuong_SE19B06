@@ -36,31 +36,27 @@ public class QuickSort {
     }
 
     public void quickSort(int head, int tail) {
-        if (head < tail) {
-            int pivotIndex = (head + tail) / 2;
-            int pivot = arr[pivotIndex];
-            int partitionIndex = partition(head, tail, pivot);
-            quickSort(head, partitionIndex - 1);
-            quickSort(partitionIndex, tail);
+        if (head >= tail) {
+            return;
         }
-    }
-
-    public int partition(int head, int tail, int pivot) {
-        while (head <= tail) {
-            while (arr[head] < pivot) {
-                head++;
+        int pivot = arr[(head + tail) / 2];
+        int i = head, j = tail;
+        while (i <= j) {
+            while (arr[i] < pivot) {
+                i++;
             }
-            while (arr[tail] > pivot) {
-                tail--;
+            while (arr[j] > pivot) {
+                j--;
             }
-            if (head <= tail) {
-                int temp = arr[head];
-                arr[head] = arr[tail];
-                arr[tail] = temp;
-                head++;
-                tail--;
+            if (i <= j) {
+                int temp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = temp;
+                i++;
+                j--;
             }
         }
-        return head;
+        quickSort(head, j);
+        quickSort(i, tail);
     }
 }
