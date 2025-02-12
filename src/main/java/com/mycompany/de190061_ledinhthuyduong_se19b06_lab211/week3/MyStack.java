@@ -4,6 +4,7 @@
  */
 package com.mycompany.de190061_ledinhthuyduong_se19b06_lab211.week3;
 
+import java.util.ArrayList;
 import java.util.Stack;
 
 /**
@@ -11,14 +12,14 @@ import java.util.Stack;
  * @author DELL
  */
 public class MyStack {
-    private Stack<Integer> stackValues;
+    private ArrayList<Integer> stackValues;
 
     public MyStack() {
-        stackValues = new Stack<>();
+        stackValues = new ArrayList<>();
     }
     
     public void push(int value) {
-        stackValues.push(value);
+        stackValues.add(value);
         System.out.println("Pushed successfully!");
     }
     
@@ -26,7 +27,7 @@ public class MyStack {
         if (stackValues.isEmpty()) {
             return -1;
         } else {
-            return stackValues.pop();
+            return stackValues.removeLast();
         }
     }
     
@@ -34,7 +35,7 @@ public class MyStack {
         if (stackValues.isEmpty()) {
             return -1;
         } else {
-            return stackValues.peek();
+            return stackValues.getLast();
         } 
     }
 }
