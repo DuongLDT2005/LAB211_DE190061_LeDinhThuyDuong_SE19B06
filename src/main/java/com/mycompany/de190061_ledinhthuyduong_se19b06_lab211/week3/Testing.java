@@ -48,25 +48,25 @@ public class Testing {
     public static void doBubbleSort() {
         System.out.println("Enter number of array:");
         int n = Validation.inputIntegerGreaterThanANumber(2);
-        BubbleSort bubbleSort = new BubbleSort(n);
-        bubbleSort.addValue();
+        Array arr = new Array(n);
+        arr.addValue();
         System.out.println("Unsorted array: ");
-        bubbleSort.displayArray();
-        bubbleSort.sortValue();
+        arr.displayArray();
+        arr.bubbleSort();
         System.out.println("Sorted array: ");
-        bubbleSort.displayArray();
+        arr.displayArray();
     }
     
     public static void doQuickSort() {
         System.out.println("Enter number of array:");
         int n = Validation.inputIntegerGreaterThanANumber(2);
-        QuickSort quickSort = new QuickSort(n);
-        quickSort.addValue();
+        Array arr = new Array(n);
+        arr.addValue();
         System.out.println("Unsorted array:");
-        quickSort.displayArray();
+        arr.displayArray();
         System.out.println("Sorted array");
-        quickSort.quickSort(0, n - 1);
-        quickSort.displayArray();
+        arr.quickSort(arr.getArr(), 0, n - 1);
+        arr.displayArray();
     }
     
     public static void doBinarySearch() {
@@ -74,14 +74,14 @@ public class Testing {
         int n = Validation.inputPositiveInteger();
         System.out.println("Enter search value:");
         int searchValue = Validation.inputPositiveInteger();
-        BinarySearch binarySearch = new BinarySearch(n);
-        binarySearch.addValue();
+        Array arr = new Array(n);
+        arr.addValue();
         System.out.println("Unsorted array:");
-        binarySearch.displayValue();
+        arr.displayArray();
         System.out.println("Sorted array:");
-        binarySearch.sortArray();
-        binarySearch.displayValue();
-        int index = binarySearch.searchValue(searchValue);
+        arr.bubbleSort();
+        arr.displayArray();
+        int index = arr.searchValue(searchValue);
         if (index == -1) {
             System.out.println("Not found " + searchValue);
         } else {
