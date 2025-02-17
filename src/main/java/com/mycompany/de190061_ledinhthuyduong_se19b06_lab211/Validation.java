@@ -4,6 +4,7 @@
  */
 package com.mycompany.de190061_ledinhthuyduong_se19b06_lab211;
 
+import java.time.LocalDate;
 import java.util.Scanner;
 
 /**
@@ -24,6 +25,22 @@ public class Validation {
         }
     }
 
+    public static String inputStringInFormat(String[] format) {
+        while (true) {
+            try {
+                String input = inputString();
+                for (String str : format) {
+                    if (input.equalsIgnoreCase(str)) {
+                        return input;
+                    }
+                }
+                throw new IllegalArgumentException("Wrong format! Please enter again!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
     public static int inputPositiveInteger() {
         while (true) {
             try {
@@ -35,6 +52,23 @@ public class Validation {
                 }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid integer format! Please enter again!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public static double inputPositiveDouble() {
+        while (true) {
+            try {
+                double input = Double.parseDouble(inputString());
+                if (input > 0) {
+                    return input;
+                } else {
+                    throw new IllegalArgumentException("Input must be positive! Please enter again!");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid double format! Please enter again!");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
             }
@@ -141,4 +175,67 @@ public class Validation {
             }
         }
     }
+
+    public static String inputDigitStringWithLength(int n) {
+        while (true) {
+            try {
+                String input = inputString();
+                if (input.matches("[0-9]+") && input.length() == n) {
+                    return input;
+                } else {
+                    throw new IllegalArgumentException("Data input is invalid!");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public static String inputAlphabetStringWithBlank() {
+        while (true) {
+            try {
+                String input = inputString();
+                if (input.matches("^[a-zA-Z\\s]+$")) {
+                    return input;
+                } else {
+                    throw new IllegalArgumentException("Data input is invalid!");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    public static int inputbirthYear() {
+        while (true) {
+            try {
+                int input = Integer.parseInt(inputString());
+                LocalDate localDate = LocalDate.now();
+                int currentYear = localDate.getYear();
+                if (input < currentYear) {
+                    return input;
+                } else {
+                    throw new IllegalArgumentException("Data input is invalid!");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public static String inputStringWithLengthLessThan(int n) {
+        while (true) {
+            try {
+                String input = inputString();
+                if (input.length() <= 30) {
+                    return input;
+                } else {
+                    throw new IllegalArgumentException("Data input is invalid!");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+    
 }
