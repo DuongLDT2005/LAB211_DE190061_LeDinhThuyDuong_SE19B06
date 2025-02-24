@@ -4,7 +4,10 @@
  */
 package com.mycompany.de190061_ledinhthuyduong_se19b06_lab211;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.Date;
 import java.util.Scanner;
 
 /**
@@ -238,4 +241,59 @@ public class Validation {
         }
     }
     
+    public static Date inputDateFormatInFuture() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false);
+        while(true) {
+            try {
+                String input = inputString();
+                Date date = sdf.parse(input);
+                Date now = new Date();
+                if (date.after(now)) {
+                    return date;
+                } else {
+                    System.out.println("Data input is invalid! Date must be in the future!");
+                }
+            } catch (ParseException e) {
+                System.out.println("Invalid date format (dd/MM/yyyy)! Please enter again!");
+            }
+        }
+    }
+    
+    public static boolean checkBeginEndDate(Date begin, Date end) {
+        return begin.before(end);
+    }
+    
+    public static Date inputTime(Date date) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mma");
+        sdf.setLenient(false);
+        while(true) {
+            try {
+                Date input = sdf.parse(inputString());
+                Date now = new Date();
+                if (input.after(now) && input.before(date)) {
+                    return input;
+                } else {
+                    System.out.println("Data input is invalid!");
+                }
+            } catch (ParseException e) {
+                System.out.println("Invalid date format (dd/MM/yyyy HH:mma)! Please enter again!");
+            }
+        }
+    }
+    
+    public static String inputDigitString() {
+        while (true) {
+            try {
+                String input = inputString();
+                if (input.matches("[0-9]+")) {
+                    return input;
+                } else {
+                    throw new IllegalArgumentException("Data input is invalid!");
+                }
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }

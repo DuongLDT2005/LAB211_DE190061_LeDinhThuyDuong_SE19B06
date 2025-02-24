@@ -9,11 +9,11 @@ package com.mycompany.de190061_ledinhthuyduong_se19b06_lab211.week4.studentandte
  * @author DELL
  */
 public class Person {
-    private String id;
-    private String fullname;
-    private String phoneNumber;
-    private int birthYear;
-    private String major;
+    protected String id;
+    protected String fullname;
+    protected String phoneNumber;
+    protected int birthYear;
+    protected String major;
 
     public Person() {
         this.id = "";

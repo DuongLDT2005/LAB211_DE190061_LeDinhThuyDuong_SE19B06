@@ -95,7 +95,7 @@ public class PersonListView {
                 personList.sortPeople(3, personList.getpeople());
                 System.out.printf("%-8s | %-20s | %-17s | %-15s | %-22s\n", "ID", "Fullname", "Phone number", "Year of birth", "Major");
                 for (Person person : personList.getpeople()) {
-                    System.out.println(person);
+                    System.out.printf("%-8s | %-20s | %-17s | %-15d | %-22s\n", person.getId(), person.getFullname(), person.getPhoneNumber(), person.getBirthYear(), person.getMajor());
                 }
                 break;
             }
