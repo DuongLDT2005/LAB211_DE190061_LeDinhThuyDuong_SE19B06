@@ -8,10 +8,10 @@ package com.mycompany.de190061_ledinhthuyduong_se19b06_lab211.week5.bignumber;
  *
  * @author DELL
  */
-public class BigNumber {
+public class Number {
     private int[] a, b;
 
-    public BigNumber(String num1, String num2) {
+    public Number(String num1, String num2) {
         this.a = new int[num1.length()];
         this.b = new int[num2.length()];
     }

@@ -296,4 +296,36 @@ public class Validation {
             }
         }
     }
+    
+    public static String inputPhoneFormat() {
+        String[] regex ={
+            "^\\d{10}$",  
+            "^\\d{3}-\\d{3}-\\d{4}$",  
+            "^\\d{3}-\\d{3}-\\d{4}\\s*x\\d+$",  
+            "^\\d{3}-\\d{3}-\\d{4}\\s*ext\\d+$",  
+            "^\\d{3}\\.\\d{3}\\.\\d{4}$",  
+            "^\\d{3}\\s\\d{3}\\s\\d{4}$" 
+        };
+        while (true) {
+            try {
+                String input = inputString();
+                for (String r : regex) {
+                    if (input.matches(r)) {
+                        return input;
+                    }
+                }
+                throw new IllegalArgumentException(
+                  """
+                  Please input Phone flow
+                  * 1234567890
+                  * 123-456-7890
+                  * 123-456-7890 x1234
+                  * 123-456-7890 ext1234
+                  * 123.456.7890
+                  * 123 456 7890""");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 }
