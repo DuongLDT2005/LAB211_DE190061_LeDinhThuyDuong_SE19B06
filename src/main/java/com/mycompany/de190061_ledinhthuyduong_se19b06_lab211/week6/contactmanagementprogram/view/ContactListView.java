@@ -15,6 +15,7 @@ import com.mycompany.de190061_ledinhthuyduong_se19b06_lab211.week6.contactmanage
 public class ContactListView {
     private ContactList contactList = new ContactList();
     public void addContact() {
+        int id = contactList.getContacts().size() + 1;
         System.out.println("--------- Add a Contact ---------");
         System.out.print("Enter First Name: ");
         String firstName = Validation.inputString();
@@ -26,7 +27,7 @@ public class ContactListView {
         String address = Validation.inputString();
         System.out.print("Enter Phone: ");
         String phone = Validation.inputPhoneFormat();
-        Contact contact = new Contact(firstName + " " + lastName, group, address, phone);
+        Contact contact = new Contact(id, firstName + " " + lastName, group, address, phone);
         contactList.addContact(contact);
         System.out.println("Successful");
     }

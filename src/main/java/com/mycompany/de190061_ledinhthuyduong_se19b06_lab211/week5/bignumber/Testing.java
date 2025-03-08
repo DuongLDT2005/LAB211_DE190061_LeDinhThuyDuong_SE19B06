@@ -24,6 +24,7 @@ public class Testing {
         System.out.println();
         System.out.println("Multiplication:");
         bigNum.display(bigNum.multiply());
+        System.out.println();
         
         BigInteger num1BI = new BigInteger(num1);
         BigInteger num2BI = new BigInteger(num2);

@@ -9,15 +9,14 @@ package com.mycompany.de190061_ledinhthuyduong_se19b06_lab211.week6.contactmanag
  * @author DELL
  */
 public class Contact {
-    private static int currentID = 0;
     private int id;
     private String fullName, group, address, phone, firstName, lastName;
 
     public Contact() {
     }
 
-    public Contact(String fullName, String group, String address, String phone) {
-        this.id = ++currentID;
+    public Contact(int id, String fullName, String group, String address, String phone) {
+        this.id = id;
         this.fullName = fullName;
         this.group = group;
         this.address = address;
