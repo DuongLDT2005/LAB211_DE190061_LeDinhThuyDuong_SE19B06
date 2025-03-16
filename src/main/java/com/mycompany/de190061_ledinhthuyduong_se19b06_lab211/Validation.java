@@ -77,6 +77,22 @@ public class Validation {
             }
         }
     }
+    public static float inputPositiveFloat() {
+        while (true) {
+            try {
+                float input = Float.parseFloat(inputString());
+                if (input > 0) {
+                    return input;
+                } else {
+                    throw new IllegalArgumentException("Input must be positive! Please enter again!");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Invalid float format! Please enter again!");
+            } catch (IllegalArgumentException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
 
     public static int inputIntegerInRange(int min, int max) {
         while (true) {

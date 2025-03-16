@@ -53,10 +53,15 @@ public class FruitListView {
     }
 
     public void viewOrders() {
+        if (orderList.getOrders().isEmpty()) {
+            System.out.println("No order to view");
+            return;
+        }
         for (Order o : orderList.getOrders()) {
             System.out.println("Customer: " + o.getCustomerName());
             displayOrderItem(o.getItems());
             System.out.println("Total: " + o.getTotal() + "$");
+            System.out.println();
         }
     }
 
@@ -75,6 +80,10 @@ public class FruitListView {
             System.out.print("Select: ");
             int selectedID = Validation.inputIntegerInRange(1, fruitList.getFruits().size());
             Fruit selectedFruit = fruitList.searchSelectedFruit(selectedID);
+            if (selectedFruit.getQuantity() == 0) {
+                System.out.println("This fruit is sold out!");
+                return;
+            }
             String name = selectedFruit.getName();
             System.out.println("You selected: " + name);
             System.out.print("Please input quantity: ");
@@ -82,6 +91,7 @@ public class FruitListView {
             OrderItem item = new OrderItem(id, quantity, name, selectedFruit.getPrice());
             items.add(item);
             selectedFruit.setQuantity(selectedFruit.getQuantity() - quantity);
+            id++;
         } while (!isContinued("Do you want to order now (Y/N)?"));
         Order order = new Order(items);
         displayOrderItem(items);
