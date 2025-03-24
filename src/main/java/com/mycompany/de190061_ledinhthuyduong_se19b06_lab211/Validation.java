@@ -43,6 +43,18 @@ public class Validation {
             }
         }
     }
+    
+    public static String inputEmailFormat() {
+        String regex = "^[\\w.%+-]+@[\\w.-]+\\.[a-zA-Z]{2,}$";
+        while (true) {
+            String email = inputString();
+            if (!email.matches(regex)) {
+                System.out.println("Email must follow the format <account name>@<domain>!");
+            } else {
+                return email;
+            }
+        }
+    }
 
     public static int inputPositiveInteger() {
         while (true) {
@@ -341,6 +353,20 @@ public class Validation {
                   * 123 456 7890""");
             } catch (IllegalArgumentException e) {
                 System.out.println(e.getMessage());
+            }
+        }
+    }
+    
+    public static Date inputDate() {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+        sdf.setLenient(false);
+        while (true) {
+            try {
+                String dateStr = inputString();
+                Date date = sdf.parse(dateStr);
+                return date;
+            } catch (ParseException e) {
+                System.out.println("Invalid date format (dd-MM-yyyy)! Please enter again!");
             }
         }
     }
